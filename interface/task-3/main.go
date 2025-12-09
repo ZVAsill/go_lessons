@@ -1,0 +1,38 @@
+package main
+
+/*
+### Задача 3. Простой интерфейс и одна реализация
+
+**Условие:**
+
+Создай интерфейс `Greeter` с методом `Greet() string`.
+
+Создай тип `Person` с полем `Name string`, который реализует этот интерфейс (метод возвращает строку `"Hello, <Name>"`).
+
+Напиши функцию `SayHello(g Greeter)`, которая печатает результат `Greet()`.
+*/
+
+import "fmt"
+
+type Greeter interface {
+	Greet() string
+}
+
+type Person struct {
+	Name string
+}
+
+func (p Person) Greet() string {
+	var g string
+	g = "Hello, " + p.Name
+	return g
+}
+
+func SayHello(g Greeter) {
+	fmt.Println(g.Greet())
+}
+
+func main() {
+	p := Person{Name: "Василий"}
+	SayHello(p)
+}
